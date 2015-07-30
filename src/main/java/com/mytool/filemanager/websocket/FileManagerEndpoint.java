@@ -10,8 +10,6 @@ import javax.inject.Inject;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.websocket.EncodeException;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
@@ -22,8 +20,7 @@ import javax.websocket.server.ServerEndpoint;
  */
 
 @ServerEndpoint(value = "/filemanager")
-//@WebServlet(urlPatterns = "/message")
-public class FileManagerEndpoint implements Serializable /*extends HttpServlet*/{
+public class FileManagerEndpoint implements Serializable{
 
 
   private final Logger log = LoggerFactory.getLogger(getClass());
@@ -34,11 +31,6 @@ public class FileManagerEndpoint implements Serializable /*extends HttpServlet*/
   public FileManagerEndpoint() {
   }
 
-  /* @Inject
-  public FileManagerEndpoint(FileManagerClient sb) {
-    System.out.println("here");
-    this.fileManagerClient = sb;
-  }*/
 
   @OnOpen
   public void open(final Session session) {
@@ -46,8 +38,7 @@ public class FileManagerEndpoint implements Serializable /*extends HttpServlet*/
     try {
     Context context = new InitialContext();
 
-      FileManagerClientImpl myBean = (FileManagerClientImpl) context.lookup("fmclient");
-      System.out.println("here");
+      fileManagerClient = (FileManagerClient) context.lookup("fmclient");
     } catch (NamingException e) {
       e.printStackTrace();
     }
@@ -65,12 +56,5 @@ public class FileManagerEndpoint implements Serializable /*extends HttpServlet*/
     }
   }
 
- // @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
-    response.setContentType("text/text");
-    response.getWriter().println("It worked!: "+
-                                 fileManagerClient.sayHello());
-  }
 
 }
