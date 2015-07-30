@@ -6,7 +6,7 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     
-    <servlet>
+  <!--  <servlet>
         <servlet-name>message</servlet-name>
         <servlet-class>com.mytool.filemanager.websocket.FileManagerEndpoint</servlet-class>
     </servlet>
@@ -15,5 +15,5 @@
         <servlet-name>message</servlet-name>
         <url-pattern>/message</url-pattern>
     </servlet-mapping>
-
+-->
 </web-app>

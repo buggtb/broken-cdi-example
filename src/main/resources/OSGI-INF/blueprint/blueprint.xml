@@ -9,8 +9,13 @@
   http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd'>
 
 
-<!--    <bean id="serviceClient" class="com.mytool.filemanager.websocket.FileManagerClientImpl">
-    </bean>-->
 
+
+
+
+    <service id="fmclient" interface="com.mytool.filemanager.websocket.FileManagerClient">
+        <bean class="com.mytool.filemanager.websocket.FileManagerClientImpl">
+        </bean>
+    </service>
 
 </blueprint>
