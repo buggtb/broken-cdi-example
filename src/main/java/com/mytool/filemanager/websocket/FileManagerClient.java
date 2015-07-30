@@ -2,6 +2,9 @@ package com.mytool.filemanager.websocket;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
 /**
  * Created by bugg on 29/07/15.
  */

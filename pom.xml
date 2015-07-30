@@ -29,10 +29,10 @@
                         <Web-ContextPath>websocket2</Web-ContextPath>
                         <!--<Bundle-ClassPath>.,resources/OSGI-INF/cxf/jaxrs,{maven-dependencies}</Bundle-ClassPath>-->
                         <Export-Package>
-                            com.mytool.filemanager.*<!--,WEB-INF.classes.com.mytool.filemanager.*-->
+                            com.mytool.filemanager.websocket.*,WEB-INF.classes.com.mytool.filemanager.*
                         </Export-Package>
                         <Import-Package>
-                            javax.enterprise.context;resolution:=optional,javax.inject;resolution:=optional,
+                            javax.servlet.*;version="[2.6,4)",javax.enterprise.context;resolution:=optional,javax.inject;resolution:=optional,
                             javax.annotation;resolution:=optional,<!--javax.ws.rs,-->*<!--;resolution:=optional-->
                         </Import-Package>
                         <!--<Pax-ManagedBeans>WEB-INF/beans.xml</Pax-ManagedBeans>-->
@@ -40,13 +40,23 @@
                             org.ops4j.pax.cdi.extension; filter:="(extension=pax-cdi-extension)",
                             osgi.extender; filter:="(osgi.extender=pax.cdi)"
                         </Require-Capability>
+                        <Require-TldBundle>
+                            org.ops4j.pax.cdi.jetty
+                        </Require-TldBundle>
+                        <Pax-ManagedBeans>WEB-INF/beans.xml</Pax-ManagedBeans>
+
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
         <dependencies>
-
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>1.2</version>
+                <scope>provided</scope>
+            </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
@@ -85,6 +95,18 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>1.2</version>
                 <scope>provided</scope>
             </dependency>
 
