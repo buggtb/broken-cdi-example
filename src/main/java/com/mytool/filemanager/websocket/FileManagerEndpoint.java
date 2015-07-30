@@ -22,7 +22,7 @@ public class FileManagerEndpoint {
   private final Logger log = LoggerFactory.getLogger(getClass());
   @Inject
   @OsgiService
-  private FileManagerClientImpl fileManagerClient;
+  private FileManagerClient fileManagerClient;
 
   @OnOpen
   public void open(final Session session) {
@@ -39,7 +39,7 @@ public class FileManagerEndpoint {
   }
 
 
-  public void setFileManagerClient(FileManagerClientImpl fileManagerClient) {
+  public void setFileManagerClient(FileManagerClient fileManagerClient) {
     this.fileManagerClient = fileManagerClient;
   }
 }
